@@ -13,7 +13,7 @@ def test_larger_id_conversion():
 def test_uuid_generator():
   assert isinstance(generate_id(), int)
 
-def test_shortener_operation():
+def test_shortener_usecase():
   repo = InMemoryURLRepo()
   usecase = URLShortener(repo)
   usecase.perform("https://en.wikipedia.org/wiki/Systems_design")
