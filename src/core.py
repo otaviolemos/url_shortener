@@ -1,6 +1,6 @@
 from uuid import uuid4
 
-def to_base_62(num):
+def to_base62(num):
   base62chars = list(str(c) for c in range(10))
   base62chars = base62chars + list(chr(c) for c in range(97, 123))
   base62chars = base62chars + list(chr(c) for c in range(65, 91))
