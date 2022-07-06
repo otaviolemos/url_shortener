@@ -1,7 +1,6 @@
 from urlshortener import to_base62, generate_id, URLShortener
 from inmemoryurlrepo import InMemoryURLRepo
 
-
 def test_simple_conversion():
   assert to_base62(10) == "a"
 
