@@ -1,6 +1,4 @@
-from core import to_base62
-from core import generate_id
-from urlshortener import URLShortener
+from urlshortener import to_base62, generate_id, URLShortener
 from inmemoryurlrepo import InMemoryURLRepo
 
 
