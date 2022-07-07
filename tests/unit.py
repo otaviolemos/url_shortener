@@ -13,11 +13,12 @@ def test_larger_id_conversion():
 def test_uuid_generator():
   assert isinstance(generate_id(), int)
 
-def test_shortener_usecase():
+def test_shortener_usecase_for_new_url():
   repo = InMemoryURLRepo()
   usecase = URLShortener(repo)
-  usecase.perform("https://en.wikipedia.org/wiki/Systems_design")
+  longUrl = "https://en.wikipedia.org/wiki/Systems_design"
+  usecase.perform(longUrl)
   records = repo.list()
   fetchedLongUrl = records[0]["longUrl"]
   assert len(records) == 1
-  assert fetchedLongUrl == "https://en.wikipedia.org/wiki/Systems_design"
+  assert fetchedLongUrl == longUrl
