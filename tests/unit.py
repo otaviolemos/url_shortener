@@ -1,4 +1,5 @@
 from urlshortener import to_base62, generate_id, URLShortener
+from urlredirector import URLRedirector, from_base62
 from inmemoryurlrepo import InMemoryURLRepo
 
 def test_simple_conversion():
@@ -34,3 +35,18 @@ def test_shortener_usecase_for_existing_url():
   fetchedLongUrl = records[0]["longUrl"]
   assert len(records) == 1
   assert fetchedLongUrl == longUrl
+
+def test_redirector_use_case():
+  originalLongUrl = "https://en.wikipedia.org/wiki/Systems_design"
+  hash = "zn9edcu"
+  repo = InMemoryURLRepo()
+  repo.add(2009215674938, originalLongUrl, hash)
+  usecase = URLRedirector(repo)
+  fetchedLongUrl = usecase.perform(hash)
+  assert fetchedLongUrl == originalLongUrl
+
+def test_from_base62():
+  assert from_base62("zn9edcu") == 2009215674938
+
+def test_simple_conversion_from_base62():
+  assert from_base62("a") == 10
