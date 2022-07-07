@@ -12,3 +12,7 @@ class URLRepo(ABC):
   @abstractmethod
   def findByLongUrl(self, longUrl):
     pass
+
+  @abstractmethod
+  def getLongUrl(self, key):
+    pass
