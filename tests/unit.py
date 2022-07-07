@@ -17,6 +17,7 @@ def test_shortener_usecase():
   repo = InMemoryURLRepo()
   usecase = URLShortener(repo)
   usecase.perform("https://en.wikipedia.org/wiki/Systems_design")
-  if "hash" in repo.get("https://en.wikipedia.org/wiki/Systems_design"):
-    assert True
-  else: assert False
+  records = repo.list()
+  fetchedLongUrl = records[0]["longUrl"]
+  assert len(records) == 1
+  assert fetchedLongUrl == "https://en.wikipedia.org/wiki/Systems_design"
