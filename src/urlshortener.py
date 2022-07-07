@@ -5,9 +5,13 @@ class URLShortener:
     self.repo = repo
   
   def perform(self, longUrl):
+    existingHash = self.repo.findByLongUrl(longUrl)
+    if existingHash:
+      return existingHash
     id = generate_id()
     hash = to_base62(id)
     self.repo.add(id, longUrl, hash)
+    return hash
 
 def to_base62(num):
   base62chars = list(str(c) for c in range(10))

@@ -10,3 +10,10 @@ class InMemoryURLRepo(URLRepo):
 
   def list(self):
     return list(self.records.values())
+  
+  def findByLongUrl(self, longUrl):
+    values = list(self.records.values())
+    for value in values:
+      if value["longUrl"] == longUrl:
+        return value["hash"]
+    return None
