@@ -6,7 +6,7 @@ class InMemoryURLRepo(URLRepo):
     self.records = {}
 
   def add(self, id, longUrl, hash):
-    self.records[longUrl] = {"hash": hash, "id": id}
+    self.records[id] = {"hash": hash, "longUrl": longUrl}
 
-  def get(self, longUrl):
-    return self.records[longUrl]
+  def list(self):
+    return list(self.records.values())

@@ -6,5 +6,5 @@ class URLRepo(ABC):
     pass
 
   @abstractmethod
-  def get(self, longUrl):
+  def list(self):
     pass
