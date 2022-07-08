@@ -15,11 +15,14 @@ def create_app():
   @app.route("/<hash>", methods = ['GET'])
   def redirect(hash):
     redirector_usecase = make_redirector_usecase(repo)
-    longUrl = redirector_usecase.perform(hash)
-    response = make_response()
-    response.headers['location'] = longUrl
-    response.status_code = 301
-    return response
+    try:
+      longUrl = redirector_usecase.perform(hash)
+      response = make_response()
+      response.headers['location'] = longUrl
+      response.status_code = 301
+      return response
+    except:
+      return "Invalid hash.", 404
   return app
 
 app = create_app()
