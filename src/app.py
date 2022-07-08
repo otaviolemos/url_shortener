@@ -9,7 +9,7 @@ def create_app():
     longUrl = request.json["longUrl"]
     shorten_usecase = make_shorten_usecase(repo)
     result = { "hash": shorten_usecase.perform(longUrl) }
-    return jsonify(result), 201
+    return jsonify(result), 200
   return app
 
 app = create_app()
