@@ -16,4 +16,14 @@ def test_shortening_url(client):
   assert response.status_code == 200
   assert response.json["hash"] is not None
 
+def test_redirect(client):
+  longUrl = "https://en.wikipedia.org/wiki/Systems_design"
+  post_response = client.post("/shorten", json={"longUrl": longUrl})
+  hash = str(post_response.json["hash"])
+  get_parameter = "/" + hash
+  get_response = client.get(get_parameter)
+  assert get_response.status_code == 301
+  assert get_response.headers["location"] == longUrl
+
+
 
