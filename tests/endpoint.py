@@ -13,5 +13,7 @@ def client():
 def test_shortening_url(client):
   longUrl = "https://en.wikipedia.org/wiki/Systems_design"
   response = client.post("/shorten", json={"longUrl": longUrl})
-  assert response.status_code == 201
+  assert response.status_code == 200
   assert response.json["hash"] is not None
+
+
