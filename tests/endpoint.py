@@ -25,5 +25,9 @@ def test_redirect(client):
   assert get_response.status_code == 301
   assert get_response.headers["location"] == longUrl
 
+def test_redirect_invalid_hash(client):
+  response = client.get("/invalid_hash")
+  assert response.status_code == 404
+
 
 

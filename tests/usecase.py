@@ -1,6 +1,7 @@
 from urlredirector import URLRedirector
 from urlshortener import URLShortener
 from inmemoryurlrepo import InMemoryURLRepo
+import pytest
 
 def test_shortener_usecase_for_new_url():
   repo = InMemoryURLRepo()
@@ -34,7 +35,7 @@ def test_redirector_use_case():
   assert fetchedLongUrl == originalLongUrl
 
 def test_redirector_usecase_invalid_hash():
-  repo = InMemoryURLRepo()
-  usecase = URLRedirector(repo)
-  ret = usecase.perform("notavalidhash")
-  assert ret == "invalid_hash"
+  with pytest.raises(Exception):
+    repo = InMemoryURLRepo()
+    usecase = URLRedirector(repo)
+    ret = usecase.perform("notavalidhash")
