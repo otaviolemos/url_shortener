@@ -18,3 +18,6 @@ def test_from_base62():
 
 def test_simple_conversion_from_base62():
   assert from_base62("a") == 10
+
+def test_invalid_hash_from_base62():
+  assert from_base62("_invalid_hash") == -1
