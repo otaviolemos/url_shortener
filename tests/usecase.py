@@ -32,3 +32,9 @@ def test_redirector_use_case():
   usecase = URLRedirector(repo)
   fetchedLongUrl = usecase.perform(hash)
   assert fetchedLongUrl == originalLongUrl
+
+def test_redirector_usecase_invalid_hash():
+  repo = InMemoryURLRepo()
+  usecase = URLRedirector(repo)
+  ret = usecase.perform("notavalidhash")
+  assert ret == "invalid_hash"
