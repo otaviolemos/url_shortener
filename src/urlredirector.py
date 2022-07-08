@@ -4,7 +4,9 @@ class URLRedirector:
 
   def perform(self, hash):
     key = from_base62(hash)
-    return self.repo.getLongUrl(key)
+    longUrl = self.repo.getLongUrl(key)
+    if longUrl: return longUrl
+    return "invalid_hash"
 
 def from_base62(hash):
   base62chars = list(str(c) for c in range(10))

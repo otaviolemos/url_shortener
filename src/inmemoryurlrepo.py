@@ -19,4 +19,6 @@ class InMemoryURLRepo(URLRepo):
     return None
 
   def getLongUrl(self, key):
-    return (self.records[key])["longUrl"]
+    if key in self.records:
+      return (self.records[key])["longUrl"]
+    return None
