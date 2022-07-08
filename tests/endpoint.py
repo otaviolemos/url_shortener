@@ -11,7 +11,7 @@ def client():
             yield client
 
 def test_shortening_url(client):
-  response = client.post("/api/shorten", data=dict(
-      longUrl="https://en.wikipedia.org/wiki/Systems_design"
-    ))
-  assert response.data == b"Hello, World!"
+  longUrl = "https://en.wikipedia.org/wiki/Systems_design"
+  response = client.post("/shorten", json={"longUrl": longUrl})
+  assert response.status_code == 201
+  assert response.json["hash"] is not None
