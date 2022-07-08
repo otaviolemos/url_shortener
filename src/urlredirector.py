@@ -16,6 +16,8 @@ def from_base62(hash):
   key = 0
   for i in range(0, length):
     char = hash[length-1-i]
+    if not (char.isalpha() or char.isdigit()):
+      return -1
     num = base62chars.index(char)
     key += num * (62 ** i)
   return key
