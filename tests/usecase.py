@@ -38,4 +38,4 @@ def test_redirector_usecase_invalid_hash():
   with pytest.raises(Exception):
     repo = InMemoryURLRepo()
     usecase = URLRedirector(repo)
-    ret = usecase.perform("notavalidhash")
+    usecase.perform("notavalidhash")
