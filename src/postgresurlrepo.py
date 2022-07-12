@@ -20,7 +20,10 @@ class PostgresURLRepo(URLRepo):
   def findByLongUrl(self, longUrl):
     cur = self.conn.cursor()
     cur.execute('SELECT hash FROM url WHERE longUrl = %s', (longUrl,))
-    return cur.fetchone()[0]
+    fetched = cur.fetchone()
+    if fetched:
+      return cur.fetchone()[0]
+    return None
 
   def getLongUrl(self, key):
     cur = self.conn.cursor()
