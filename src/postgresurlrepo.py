@@ -22,7 +22,7 @@ class PostgresURLRepo(URLRepo):
     cur.execute('SELECT hash FROM url WHERE longUrl = %s', (longUrl,))
     fetched = cur.fetchone()
     if fetched:
-      return cur.fetchone()[0]
+      return fetched[0]
     return None
 
   def getLongUrl(self, key):
