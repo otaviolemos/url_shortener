@@ -28,4 +28,7 @@ class PostgresURLRepo(URLRepo):
   def getLongUrl(self, key):
     cur = self.conn.cursor()
     cur.execute('SELECT longUrl FROM url WHERE id = %s', (key,))
-    return cur.fetchone()[0]
+    fetched = cur.fetchone()
+    if fetched:
+      return fetched[0]
+    return None
