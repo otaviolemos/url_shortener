@@ -2,8 +2,8 @@ create database url_shortener;
 create table url 
 (
 	id int NOT NULL PRIMARY KEY,
-	hash varchar (255) NOT NULL, 
-	longurl varchar (255) NOT NULL
+  longurl varchar (255) NOT NULL,
+	hash varchar (255) NOT NULL
 );
 create user test_user with password '1234';
 grant all privileges on database url to test_user;
