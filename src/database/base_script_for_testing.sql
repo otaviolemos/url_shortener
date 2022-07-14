@@ -6,5 +6,5 @@ create table url
 	hash varchar (255) NOT NULL
 );
 create user test_user with password '1234';
-grant all privileges on database url to test_user;
+grant all privileges on database url_shortener to test_user;
 grant all privileges on table url_shortener.url to test_user;
