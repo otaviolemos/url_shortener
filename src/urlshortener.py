@@ -14,9 +14,9 @@ class URLShortener:
     return hash
 
 def to_base62(num):
-  base62chars = list(str(c) for c in range(10))
-  base62chars = base62chars + list(chr(c) for c in range(97, 123))
-  base62chars = base62chars + list(chr(c) for c in range(65, 91))
+  base62chars = list(str(n) for n in range(10))
+  base62chars = base62chars + list(chr(n) for n in range(ord('a'), ord('z')+1))
+  base62chars = base62chars + list(chr(n) for n in range(ord('A'), ord('Z')+1))
   converted = ""
   while num // 62 != 0:
     remainder = num % 62
